@@ -14,5 +14,8 @@ class SubscriptionService:
 
         return [{
             "username": result[1],
-             "to": result[2],
+            "to": result[2],
+            "token": None,
+            "type": "subscription",
+
          } for result in results]
