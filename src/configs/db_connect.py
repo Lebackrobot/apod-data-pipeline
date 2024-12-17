@@ -1,7 +1,9 @@
+from src.configs.logging_config import logging
+from dotenv import load_dotenv
+from os import getenv
 import sqlalchemy
 
-from os import getenv
-from dotenv import load_dotenv
+log = logging.getLogger(__name__)
 
 load_dotenv(override=True)
 
@@ -12,4 +14,4 @@ try:
     db_connection = db_engine.connect()
 
 except Exception as error:
-    print(f"Fail to db_connect: {error}")
+    log.error(f"Fail to db_connect: {error}")
