@@ -10,8 +10,12 @@ if __name__ == '__main__':
     log = logging.getLogger(__name__)
 
     log.info('🚀 Start pipeline service')
-    schedule.every().day.at('08:00', 'America/Sao_Paulo').do(SetupCachePipeline.run)
-    schedule.every().day.at('20:45', 'America/Sao_Paulo').do(SubscriptionQueuingPipeline.run)
+
+    log.info('📅 Scheduler SetupCachePipeline.run 07:00')
+    schedule.every().day.at('07:00', 'America/Sao_Paulo').do(SetupCachePipeline.run)
+
+    log.info('📅 Scheduler SubscriptionQueuingPipeline.run 10:00')
+    schedule.every().day.at('10:00', 'America/Sao_Paulo').do(SubscriptionQueuingPipeline.run)
 
     while True:
         schedule.run_pending()
